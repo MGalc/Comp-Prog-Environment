@@ -8,11 +8,18 @@ call vundle#begin()
 "required
 Plugin 'VundleVim/Vundle.vim'
 
+Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'xuhdev/SingleCompile'
-Plugin 'w0ng/vim-hybrid'
 Plugin 'jiangmiao/auto-pairs'
+
+"colourschemes
+Plugin 'josuegaleas/jay'
+Plugin 'tyrannicaltoucan/vim-quantum'
+Plugin 'KeitaNakamura/neodark.vim'
+Plugin 'w0ng/vim-hybrid'
+Plugin 'romainl/Apprentice'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -73,9 +80,14 @@ endif
 
 
 "--------------General Commands--------------"
+"Change colourscheme to 256bit when run from gnome terminal
+if $COLORTERM == 'gnome-terminal'
+    set t_Co=256
+endif
+
 set makeprg=g++\ -std=c++11\ %
 "set guifont=Hack:h8
-colorscheme hybrid
+colorscheme neodark
 set background=dark
 
 set tabstop=4
@@ -108,9 +120,10 @@ vmap gc \cm
 
 "Single Compile
 nmap <F9> :SCCompileAF -std=c++11<cr>
-nmap <F10> :SCCompileRunAF -O0 -std=c++11<cr>
+nmap <F10> :SCCompileAF -O2 -std=c++11<cr>
 
 "--------------Other Stuff--------------"
+set term=screen-256color
 filetype plugin indent on
 syntax on
 set hidden
