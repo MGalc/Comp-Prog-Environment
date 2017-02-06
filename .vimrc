@@ -68,8 +68,10 @@ if hostname() == 'MIKE'
 elseif hostname() == 'mike-Aspire-5750G'
 	"Laptop
 	"cd ~/Documents/Programming
-	set backupdir=~/vim/backups
-    set directory=~/vim/backups
+    set backup
+	set backupdir=~/.vim/backup
+    set swapfile
+    set directory=~/.vim/swp
     let g:hybrid_custom_term_colors = 1 "Linux hack for hybrid colorscheme
     let g:hybrid_reduced_contrast = 1
 
@@ -86,8 +88,7 @@ if $COLORTERM == 'gnome-terminal'
 endif
 
 set makeprg=g++\ -std=c++11\ %
-"set guifont=Hack:h8
-colorscheme neodark
+colorscheme hybrid
 set background=dark
 
 set tabstop=4
@@ -105,6 +106,7 @@ set colorcolumn=110 "Should be around the limit for horizontal code width.
 "--------------General Mappings--------------"
 nnoremap <F4> :make!<cr> "Prevent from jumping to first error
 map <space> <leader>
+"Issue with Vim in Gnome terminal, have to test with other terminals.
 nmap <A-k> O<Esc>j
 nmap <A-j> o<Esc>k
 nmap <A-[> /{<CR>
@@ -123,6 +125,13 @@ nmap <F9> :SCCompileAF -std=c++11<cr>
 nmap <F10> :SCCompileAF -O2 -std=c++11<cr>
 
 "--------------Other Stuff--------------"
+"highlight Cursor guifg=white guibg=black
+"highlight iCursor guifg=white guibg=steelblue
+"set guicursor=n-v-c:block-Cursor
+"set guicursor+=i:ver100-iCursor
+"set guicursor+=n-v-c:blinkon0
+"set guicursor+=i:blinkwait10
+
 set term=screen-256color
 filetype plugin indent on
 syntax on

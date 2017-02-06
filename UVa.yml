@@ -1,0 +1,27 @@
+# ~/.tmuxinator/UVa.yml
+
+# Sets up a layout for just doing general UVa questions.
+#
+# Creates two windows:
+#   One with:
+#       Vim editor
+#       Vim with input/output files open
+#       Pane for running gdb
+#   Other with:
+#       Two panes for looking at datastructure templates
+
+name: UVa
+root: ~/Documents/Programming/UVa
+
+windows:
+  - editor:
+      layout: 0826,170x40,0,0{103x40,0,0,0,66x40,104,0[66x19,104,0,4,66x20,104,20,5]}
+      panes:
+          - clear
+          - clear
+          - vim -nO input output
+  - templates:
+      layout: even-horizontal
+      panes:
+          - cd "../Templates/DataStructs & Algorithms" && clear
+          - cd "../Templates/DataStructs & Algorithms" && clear
